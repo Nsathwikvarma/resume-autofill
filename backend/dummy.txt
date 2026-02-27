@@ -1,0 +1,6 @@
+Warun Tej Rangu
+Email: waruntejrangu@gmail.com
+Phone: 9876543210
+Education: B.Tech
+Skills: Python, React, NLP, AI
+Summary: I am an AI enthusiast with web development skills.
