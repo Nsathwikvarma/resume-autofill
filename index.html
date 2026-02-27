@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEET - Digital Employment Exchange of Telangana</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <!-- Header Banner -->
+    <header class="top-banner">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            DEET never asks for money or fees for jobs. Beware of fraud — do not pay
+        </marquee>
+    </header>
+
+    <div class="main-container">
+
+        <!-- Left Side: Registration Form -->
+        <section class="form-section">
+
+            <div class="logo-container">
+                <div class="logo-circles">
+                    <img src="custom_logo.png" alt="Custom Logo" class="govt-logo"
+                        style="width: 80px; height: 80px; object-fit: contain;">
+                </div>
+            </div>
+
+            <h2 class="form-headline">Sign up for free.</h2>
+            <p class="form-subheadline">Let's build your Profile and Future</p>
+
+            <!-- Instant Registration / Upload Resume -->
+            <div class="resume-upload-card" onclick="document.getElementById('instant-resume').click()">
+                <div class="upload-icon-container">
+                    <i class='bx bx-cloud-upload'></i>
+                </div>
+                <div class="upload-text">
+                    <h3>Instant Registration</h3>
+                    <p>Upload your resume to auto-fill this form instantly using AI.</p>
+                </div>
+                <input type="file" id="instant-resume" class="hidden-file-input" accept=".pdf,.doc,.docx,image/*,.txt"
+                    onchange="handleResumeUpload(this)">
+            </div>
+
+            <div class="divider-text">
+                <span>OR</span>
+            </div>
+
+            <form action="#" class="registration-form">
+
+                <div class="form-group radio-group">
+                    <label>Are you a Local Candidate of Telangana? <i class='bx bx-info-circle'></i></label>
+                    <div class="radio-options">
+                        <label><input type="radio" name="local_candidate" value="yes" checked> Yes</label>
+                        <label><input type="radio" name="local_candidate" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="form-group input-icon">
+                    <i class='bx bxs-user' style="padding-top:13px;"></i>
+                    <input type="text" id="reg-name" placeholder="Name *" required>
+                </div>
+
+                <div class="form-group input-icon">
+                    <i class='bx bxs-user-detail' style="padding-top:13px;"></i>
+                    <input type="text" id="reg-surname" placeholder="Surname *" required>
+                </div>
+
+                <div class="form-group input-icon">
+                    <i class='bx bxs-phone' style="padding-top:13px;"></i>
+                    <input type="tel" id="reg-phone" placeholder="Mobile No *" required>
+                </div>
+
+                <div class="form-group input-icon">
+                    <i class='bx bxs-envelope' style="padding-top:13px;"></i>
+                    <input type="email" id="reg-email" placeholder="Mail ID *" required>
+                </div>
+                <div class="form-group input-icon">
+                    <i class='bx bx-calendar' style="padding-top:13px;"></i>
+                    <input type="date" id="reg-dob" placeholder="Date of Birth *" required>
+                </div>
+
+                <div class="form-group radio-group inline-labels">
+                    <label>Gender<span class="required">*</span>:</label>
+                    <div class="radio-options">
+                        <label><input type="radio" name="gender" value="male"> Male</label>
+                        <label><input type="radio" name="gender" value="female"> Female</label>
+                        <label><input type="radio" name="gender" value="others"> Others</label>
+                    </div>
+                </div>
+
+                <div class="form-group radio-group inline-labels">
+                    <label>Physically challenged<span class="required">*</span>:</label>
+                    <div class="radio-options">
+                        <label><input type="radio" name="ph" value="yes"> Yes</label>
+                        <label><input type="radio" name="ph" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="form-group select-wrapper">
+                    <select id="social-status-select" required>
+                        <option value="" disabled selected>Social Status *</option>
+                        <option value="sc">SC</option>
+                        <option value="st">ST</option>
+                        <option value="bc">BC</option>
+                        <option value="general">General</option>
+                    </select>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+
+                <div class="form-group select-wrapper">
+                    <select id="district-select" required>
+                        <option value="" disabled selected>District *</option>
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="warangal">Warangal</option>
+                        <option value="nizamabad">Nizamabad</option>
+                        <!-- Other districts will be populated by API -->
+                    </select>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+
+                <div class="form-group radio-group">
+                    <label>Does your residence fall under Rural or Urban?<span class="required">*</span></label>
+                    <div class="radio-options">
+                        <label><input type="radio" name="residence" value="rural"> Rural</label>
+                        <label><input type="radio" name="residence" value="urban"> Urban</label>
+                    </div>
+                </div>
+
+                <div class="form-group select-wrapper">
+                    <select id="mandal-select" required>
+                        <option value="" disabled selected>Mandal/Municipality/Municipal Corporation *</option>
+                    </select>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+
+                <div class="form-group select-wrapper">
+                    <select id="village-select">
+                        <option value="" disabled selected>Village/Ward No</option>
+                    </select>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+
+                <div class="form-group address-group">
+                    <label>Address<span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class='bx bxs-map'></i>
+                        <input type="text" id="address-hno" placeholder="H.No" required>
+                    </div>
+                    <div class="input-icon">
+                        <i class='bx bxs-map-pin'></i>
+                        <input type="text" id="address-street" placeholder="Street" required>
+                    </div>
+                    <div class="input-icon">
+                        <i class='bx bxs-map'></i>
+                        <input type="text" id="pincode-input" placeholder="PIN Code *" maxlength="6" pattern="[0-9]{6}"
+                            oninput="fetchLocationData(this.value)" required>
+                    </div>
+                    <p id="pincode-msg"
+                        style="font-size: 0.8rem; color: var(--primary-blue); display: none; margin-left: 15px; margin-top: -5px;">
+                    </p>
+                </div>
+
+                <div class="form-group input-icon">
+                    <i class='bx bxs-user-circle' style="padding-top:13px;"></i>
+                    <input type="text" placeholder="Username *" required>
+                </div>
+
+                <div class="form-group input-icon">
+                    <i class='bx bxs-lock-alt' style="padding-top:13px;"></i>
+                    <input type="password" placeholder="Password *" required>
+                </div>
+
+                <div class="form-group input-icon">
+                    <input type="text" placeholder="Referral Code (Optional)" style="padding-left: 15px;">
+                </div>
+
+                <div class="form-group select-wrapper">
+                    <select required>
+                        <option value="" disabled selected>How did you come across DEET? *</option>
+                        <option value="social">Social Media</option>
+                        <option value="friend">Friend</option>
+                        <option value="flyer">Flyer</option>
+                    </select>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+
+                <button type="submit" class="register-btn"
+                    onclick="event.preventDefault(); window.location.href='profile.html';">Register</button>
+
+            </form>
+        </section>
+
+        <!-- Right Side: Presentation Context -->
+        <section class="presentation-section" style="padding: 0; background-color: #b1ccdf;">
+            <img src="provided_image.png" alt="Presentation Graphic"
+                style="width: 100%; height: 100%; object-fit: cover;">
+        </section>
+
+    </div>
+
+    <script>
+        async function handleResumeUpload(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const fileName = file.name;
+                const uploadCard = input.parentElement;
+
+                const iconContainer = uploadCard.querySelector('.upload-icon-container');
+                const textContainer = uploadCard.querySelector('.upload-text');
+
+                // Show uploading state
+                iconContainer.style.backgroundColor = '#e3f2fd';
+                iconContainer.style.color = '#1976d2';
+                iconContainer.innerHTML = `<i class='bx bx-loader-alt bx-spin'></i>`;
+
+                textContainer.innerHTML = `
+                    <h3 style="color: #1976d2;">Processing with AI...</h3>
+                    <p>Extracting details from <strong>${fileName}</strong></p>
+                `;
+
+                // Prepare FormData for the backend
+                const formData = new FormData();
+                formData.append("resume", file);
+
+                try {
+                    // Call our Python Flask Backend
+                    const response = await fetch("http://localhost:5000/api/extract-resume", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.error || "Failed to process resume");
+                    }
+
+                    const resumeData = result.data;
+
+                    // Success State
+                    iconContainer.style.backgroundColor = '#e8f5e9';
+                    iconContainer.style.color = '#2e7d32';
+                    iconContainer.innerHTML = `<i class='bx bx-check-circle'></i>`;
+
+                    textContainer.innerHTML = `
+                        <h3 style="color: #2e7d32;">Success!</h3>
+                        <p><strong>${fileName}</strong> uploaded. Form auto-filled.</p>
+                    `;
+                    document.querySelector('.registration-form').classList.add('auto-filled-glow');
+
+                    // ==========================================
+                    // AUTO-FILL LOGIC: Map AI data to HTML Form
+                    // ==========================================
+                    if (resumeData.firstName) document.getElementById('reg-name').value = resumeData.firstName;
+                    if (resumeData.lastName) document.getElementById('reg-surname').value = resumeData.lastName;
+                    if (resumeData.email) document.getElementById('reg-email').value = resumeData.email;
+                    if (resumeData.phone) document.getElementById('reg-phone').value = resumeData.phone;
+                    if (resumeData.dob) document.getElementById('reg-dob').value = resumeData.dob;
+
+                    if (resumeData.gender) {
+                        const genderRadios = document.getElementsByName('gender');
+                        for (let i = 0; i < genderRadios.length; i++) {
+                            if (genderRadios[i].value === resumeData.gender.toLowerCase()) {
+                                genderRadios[i].checked = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (resumeData.socialStatus) {
+                        const socialSelect = document.getElementById('social-status-select');
+                        for (let i = 0; i < socialSelect.options.length; i++) {
+                            if (socialSelect.options[i].value.toLowerCase() === resumeData.socialStatus.toLowerCase()) {
+                                socialSelect.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (resumeData.address) {
+                        if (resumeData.address.hno) document.getElementById('address-hno').value = resumeData.address.hno;
+                        if (resumeData.address.street) document.getElementById('address-street').value = resumeData.address.street;
+                        if (resumeData.address.pincode) {
+                            const pinInput = document.getElementById('pincode-input');
+                            pinInput.value = resumeData.address.pincode;
+                            // Trigger the pincode lookup automatically
+                            fetchLocationData(resumeData.address.pincode);
+                        }
+                    }
+
+                    // The rest of the fields (education, skills) belong to profile.html.
+                    // In a real app, we'd store `resumeData` in localStorage or a Database 
+                    // and populate profile.html when the user navigates there next.
+                    localStorage.setItem("aiResumeData", JSON.stringify(resumeData));
+
+                } catch (error) {
+                    // Error State
+                    iconContainer.style.backgroundColor = '#ffebee';
+                    iconContainer.style.color = '#d32f2f';
+                    iconContainer.innerHTML = `<i class='bx bx-error'></i>`;
+
+                    textContainer.innerHTML = `
+                        <h3 style="color: #d32f2f;">Upload Failed</h3>
+                        <p>${error.message}. Please fill manually.</p>
+                    `;
+                    console.error("Resume Extraction Error:", error);
+                } finally {
+                    input.value = ''; // Reset file input so they can retry
+                }
+            }
+        }
+
+        async function fetchLocationData(pincode) {
+            const msgElement = document.getElementById('pincode-msg');
+            const districtSelect = document.getElementById('district-select');
+            const mandalSelect = document.getElementById('mandal-select');
+            const villageSelect = document.getElementById('village-select');
+
+            // Only fetch when exactly 6 digits are entered
+            if (pincode.length !== 6 || isNaN(pincode)) {
+                msgElement.style.display = 'none';
+                return;
+            }
+
+            msgElement.style.display = 'block';
+            msgElement.style.color = 'var(--primary-blue)';
+            msgElement.innerText = 'Searching location details...';
+
+            try {
+                // Using the free, public Indian Postal PIN Code API
+                const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+                const data = await response.json();
+
+                if (data[0].Status === 'Success') {
+                    const postOffices = data[0].PostOffice;
+
+                    // 1. Set District (assuming all POs for a PIN are in same district)
+                    const districtName = postOffices[0].District;
+
+                    // Check if district option exists, if not, add it
+                    let districtExists = false;
+                    for (let i = 0; i < districtSelect.options.length; i++) {
+                        if (districtSelect.options[i].text.toLowerCase() === districtName.toLowerCase()) {
+                            districtSelect.selectedIndex = i;
+                            districtExists = true;
+                            break;
+                        }
+                    }
+                    if (!districtExists) {
+                        const newOption = new Option(districtName, districtName.toLowerCase(), true, true);
+                        districtSelect.add(newOption);
+                    }
+
+                    // 2. Populate Mandal / Block
+                    // Get unique blocks/taluk
+                    const uniqueMandals = [...new Set(postOffices.map(po => po.Block).filter(Boolean))];
+
+                    mandalSelect.innerHTML = '<option value="" disabled selected>Mandal/Municipality/Municipal Corporation *</option>';
+                    uniqueMandals.forEach(mandal => {
+                        mandalSelect.add(new Option(mandal, mandal));
+                    });
+                    if (uniqueMandals.length === 1) mandalSelect.selectedIndex = 1;
+
+                    // 3. Populate Villages
+                    const uniqueVillages = [...new Set(postOffices.map(po => po.Name).filter(Boolean))];
+
+                    villageSelect.innerHTML = '<option value="" disabled selected>Village/Ward No</option>';
+                    uniqueVillages.forEach(village => {
+                        villageSelect.add(new Option(village, village));
+                    });
+                    if (uniqueVillages.length === 1) villageSelect.selectedIndex = 1;
+
+                    msgElement.style.color = '#2e7d32'; // Green
+                    msgElement.innerText = `Found ${postOffices.length} locations for this PIN.`;
+
+                    // Visual cue
+                    districtSelect.closest('.form-group').classList.add('auto-filled-glow');
+                    setTimeout(() => districtSelect.closest('.form-group').classList.remove('auto-filled-glow'), 1500);
+
+                } else {
+                    msgElement.style.color = 'var(--alert-red)';
+                    msgElement.innerText = 'Invalid PIN Code or location not found.';
+                    // reset selects
+                    mandalSelect.innerHTML = '<option value="" disabled selected>Mandal/Municipality/Municipal Corporation *</option>';
+                    villageSelect.innerHTML = '<option value="" disabled selected>Village/Ward No</option>';
+                }
+            } catch (error) {
+                console.error("Error fetching PIN code data:", error);
+                msgElement.style.color = 'var(--alert-red)';
+                msgElement.innerText = 'Service unavailable. Please enter manually.';
+            }
+        }
+    </script>
+</body>

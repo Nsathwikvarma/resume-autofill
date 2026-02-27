@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEET - Profile Setup</title>
+    <link rel="stylesheet" href="profile-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="logo-container">
+            <img src="custom_logo.png" alt="Govt Logo" class="govt-logo">
+            <div class="deet-branding">
+                <h1 class="deet-logo"><span>D</span>EET</h1>
+                <p class="logo-subtext">A digital employment exchange of Telangana</p>
+            </div>
+        </div>
+        <button class="sign-out-btn">Sign Out</button>
+    </header>
+
+    <main class="profile-container">
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <button class="tab active" id="tab-btn-profile" onclick="switchTab('tab-profile-details')">Profile
+                Details</button>
+            <button class="tab" id="tab-btn-additional" onclick="switchTab('tab-additional-details')">Additional
+                Details</button>
+        </div>
+
+        <!-- Form Content -->
+        <div class="form-card">
+
+            <!-- Tab 1: Profile Details -->
+            <div id="tab-profile-details" class="tab-content active-tab">
+                <!-- Image Upload -->
+                <div class="profile-image-section">
+                    <div class="image-placeholder">
+                        <i class='bx bxs-user'></i>
+                    </div>
+                    <button class="upload-btn">Upload Image</button>
+                </div>
+
+                <!-- Languages -->
+                <div class="form-group">
+                    <label>Languages Known<span class="required">*</span></label>
+                    <div class="tag-input-container" id="languages-container">
+                        <div class="tag">
+                            Telugu <i class='bx bx-x'></i>
+                        </div>
+                        <input type="text" id="languages-input" placeholder="Add a Language">
+                    </div>
+                </div>
+
+                <!-- Pursuing -->
+                <div class="form-group radio-group">
+                    <label>Are you pursuing ?<span class="required">*</span></label>
+                    <div class="radio-options">
+                        <label><input type="radio" name="pursuing" value="yes"> Yes</label>
+                        <label><input type="radio" name="pursuing" value="no" checked> No</label>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="form-group select-wrapper">
+                    <label>Highest Education Qualification<span class="required">*</span></label>
+                    <p class="alert-text">Alert (Job notifications received based on Highest Qualification)</p>
+                    <p class="note-text">Note: Click the X to clear the search and display all degrees when you see 'No
+                        sub-degree found'.</p>
+                    <select required id="highest-education">
+                        <option value="" disabled selected>Highest Education Qualification</option>
+                        <option value="btech">B.Tech</option>
+                        <option value="degree">Degree</option>
+                    </select>
+                    <i class='bx bx-chevron-down'></i>
+                </div>
+
+                <div class="form-group input-icon">
+                    <label>Year of Passed Out<span class="required">*</span></label>
+                    <input type="date" id="passout-year" placeholder="Year of calender" required>
+                    <i class='bx bx-calendar right-icon'></i>
+                </div>
+
+                <!-- Job Search -->
+                <div class="form-group radio-group">
+                    <label>Are you actively looking for job<span class="required">*</span></label>
+                    <div class="radio-options">
+                        <label><input type="radio" name="active_job" value="yes"> Yes</label>
+                        <label><input type="radio" name="active_job" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Your preferred job location</label>
+                    <input type="text" placeholder="Select District" class="standard-input">
+                </div>
+
+                <div class="form-group radio-group">
+                    <label>Educational Institution type<span class="required">*</span></label>
+                    <div class="radio-options">
+                        <label><input type="radio" name="inst_type" value="gov"> Government</label>
+                        <label><input type="radio" name="inst_type" value="private"> Private</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>College Name<span class="required">*</span></label>
+                    <input type="text" id="college-name" placeholder="College Name" class="standard-input">
+                </div>
+
+                <!-- Qualifications Blocks -->
+                <div class="qualifications-section">
+                    <label class="section-label">Academic Qualifications (Optional)</label>
+
+                    <div class="qual-block">
+                        <span class="qual-title">School</span>
+                        <div style="display:flex; gap:10px; align-items:center; width: 100%;">
+                            <button id="school-btn" class="add-qual-btn" style="white-space:nowrap;">+ Add
+                                School</button>
+                            <input type="text" id="school-input" class="standard-input" placeholder="School Name"
+                                style="display:none; width: 100%;">
+                        </div>
+                    </div>
+
+                    <div class="qual-block">
+                        <span class="qual-title">Intermediate</span>
+                        <div style="display:flex; gap:10px; align-items:center; width: 100%;">
+                            <button id="inter-btn" class="add-qual-btn" style="white-space:nowrap;">+ Add
+                                Intermediate</button>
+                            <input type="text" id="inter-input" class="standard-input" placeholder="Intermediate Name"
+                                style="display:none; width: 100%;">
+                        </div>
+                    </div>
+
+                    <div class="qual-block">
+                        <span class="qual-title">Undergraduate</span>
+                        <button class="add-qual-btn">+ Add Undergraduate</button>
+                    </div>
+
+                    <div class="qual-block">
+                        <span class="qual-title">Post Graduate</span>
+                        <button class="add-qual-btn">+ Add Post Graduate</button>
+                    </div>
+
+                    <div class="qual-block">
+                        <span class="qual-title">PhD</span>
+                        <button class="add-qual-btn">+ Add PhD</button>
+                    </div>
+
+                    <div class="qual-block">
+                        <span class="qual-title">Other's (ITI/POLYTECHNIC etc)</span>
+                        <button class="add-qual-btn">+ Add Other's (ITI/POLYTECHNIC etc)</button>
+                    </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="form-group mt-4">
+                    <label>Interested Job Function<span class="required">*</span></label>
+                    <input type="text" placeholder="Add a Job Function" class="standard-input">
+                    <p class="error-text">Please add Highest Education Qualification to get Trending Job Functions</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Mandatory Skills (Technical Skills / Academic Skills)<span class="required">*</span></label>
+                    <input type="text" id="mandatory-skills" placeholder="Add a skill" class="standard-input">
+                    <p class="note-text mt-1">Note: Select minimum 5 mandatory skills.</p>
+
+                    <label class="sub-label mt-3">Suggested Mandatory Skills</label>
+                    <div class="suggested-tags">
+                        <span class="suggest-tag">Business Acumen</span>
+                        <span class="suggest-tag">Conflict Resolution</span>
+                        <span class="suggest-tag">Critical Thinking</span>
+                        <span class="suggest-tag">Customer Service</span>
+                        <span class="suggest-tag">Customer Service Management</span>
+                        <span class="suggest-tag">Decision Making</span>
+                        <span class="suggest-tag">Emotional Intelligence</span>
+                        <span class="suggest-tag">Entrepreneurship</span>
+                        <span class="suggest-tag">Interpersonal Skills</span>
+                        <span class="suggest-tag">Leadership</span>
+                        <span class="suggest-tag">Negotiation</span>
+                        <span class="suggest-tag">Networking</span>
+                        <span class="suggest-tag">Observation</span>
+                        <span class="suggest-tag">Planning</span>
+                        <span class="suggest-tag">Problem Solving</span>
+                        <span class="suggest-tag">Public Speaking</span>
+                        <span class="suggest-tag">Team Organisation</span>
+                        <span class="suggest-tag">Time Management</span>
+                        <span class="suggest-tag">Translation</span>
+                        <span class="suggest-tag">Writing</span>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label>Optional Skills (Soft Skills / Non-Technical Skills) (Optional)</label>
+                    <input type="text" id="optional-skills" placeholder="Add a skill" class="standard-input">
+
+                    <label class="sub-label mt-3">Suggested Optional Skills</label>
+                    <div class="suggested-tags">
+                        <span class="suggest-tag">Business Acumen</span>
+                        <span class="suggest-tag">Conflict Resolution</span>
+                        <span class="suggest-tag">Critical Thinking</span>
+                        <span class="suggest-tag">Customer Service</span>
+                        <span class="suggest-tag">Customer Service Management</span>
+                        <span class="suggest-tag">Decision Making</span>
+                        <span class="suggest-tag">Emotional Intelligence</span>
+                        <span class="suggest-tag">Entrepreneurship</span>
+                        <span class="suggest-tag">Interpersonal Skills</span>
+                        <span class="suggest-tag">Leadership</span>
+                        <span class="suggest-tag">Negotiation</span>
+                        <span class="suggest-tag">Networking</span>
+                        <span class="suggest-tag">Observation</span>
+                        <span class="suggest-tag">Planning</span>
+                        <span class="suggest-tag">Problem Solving</span>
+                        <span class="suggest-tag">Public Speaking</span>
+                        <span class="suggest-tag">Team Organisation</span>
+                        <span class="suggest-tag">Time Management</span>
+                        <span class="suggest-tag">Translation</span>
+                        <span class="suggest-tag">Writing</span>
+                    </div>
+                </div>
+
+                <div class="form-actions mt-4 align-right">
+                    <button class="primary-btn"
+                        onclick="document.getElementById('tab-btn-additional').click()">Next</button>
+                </div>
+            </div>
+
+            <!-- Tab 2: Additional Details -->
+            <div id="tab-additional-details" class="tab-content" style="display: none;">
+
+                <!-- Summary -->
+                <div class="form-group">
+                    <label>Summary<span class="required">*</span></label>
+                    <textarea id="summary-input" class="standard-input" rows="4"
+                        placeholder="Add your summary under 150 characters" maxlength="150"
+                        oninput="document.getElementById('char-count').innerText = this.value.length + '/150'"></textarea>
+                    <div class="char-counter" id="char-count">0/150</div>
+                </div>
+
+                <!-- Salary Slider -->
+                <div class="form-group mt-3">
+                    <label>Expected annual salary<span class="required">*</span></label>
+                    <div class="slider-container">
+                        <div class="slider-labels">
+                            <span>0L</span>
+                            <span>5L</span>
+                        </div>
+                        <input type="range" min="0" max="50" value="0" class="custom-slider">
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="form-group mt-4 row-group">
+                    <div class="select-wrapper flex-half">
+                        <label>Year of Experience<span class="required">*</span></label>
+                        <select id="exp-years" required>
+                            <option value="" disabled selected>Years *</option>
+                            <option value="0">0 Years</option>
+                            <option value="1">1 Year</option>
+                            <option value="2">2 Years</option>
+                            <option value="3">3 Years</option>
+                            <option value="4">4 Years</option>
+                            <option value="5">5+ Years</option>
+                        </select>
+                        <i class='bx bx-chevron-down'></i>
+                    </div>
+
+                    <div class="select-wrapper flex-half adjust-mt">
+                        <!-- Spacer for alignment -->
+                        <select id="exp-months" required>
+                            <option value="" disabled selected>Months *</option>
+                            <option value="0">0 Months</option>
+                            <option value="1">1 Month</option>
+                            <option value="2">2 Months</option>
+                            <option value="3">3 Months</option>
+                            <option value="4">4 Months</option>
+                            <option value="5">5 Months</option>
+                            <option value="6">6 Months</option>
+                            <option value="7">7+ Months</option>
+                        </select>
+                        <i class='bx bx-chevron-down'></i>
+                    </div>
+                </div>
+
+                <!-- Exp / Internship Blocks -->
+                <div class="qualifications-section mt-4">
+                    <label class="section-label">Experience/Internship (Optional)</label>
+                    <button class="add-qual-btn">+ Add Experience/Internship</button>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label>Job Type<span class="required">*</span></label>
+                    <input type="text" id="job-type" placeholder="Add a Job Type" class="standard-input">
+                </div>
+
+                <!-- File Uploads -->
+                <div class="file-upload-block mt-4">
+                    <label class="section-label">Upload Resume (Optional)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="resume-upload" class="file-input-hidden">
+                        <button class="file-select-btn"
+                            onclick="document.getElementById('resume-upload').click()">Choose File</button>
+                        <span class="file-name-display" id="resume-name">No file chosen</span>
+                    </div>
+                    <p class="file-support-text mt-1">Supported file formats: Pdf only.</p>
+                    <p class="file-support-text note-text">Note: Maximum file size 1MB only.</p>
+                </div>
+
+                <div class="file-upload-block mt-3">
+                    <label class="section-label">Upload Identity card (Optional)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="id-upload" class="file-input-hidden">
+                        <button class="file-select-btn" onclick="document.getElementById('id-upload').click()">Choose
+                            File</button>
+                        <span class="file-name-display" id="id-name">No file chosen</span>
+                    </div>
+                    <p class="file-support-text mt-1 note-text">(Eg: Aadhar Card/Voter ID/College ID...)</p>
+                </div>
+
+                <div class="qualifications-section mt-4 mb-2">
+                    <label class="section-label" style="margin-bottom: 5px;">Certificates (Optional)</label>
+                </div>
+
+                <div class="file-upload-block mt-2">
+                    <label class="sub-label mb-1 block">Upload Certificate 1 (Optional)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="cert1-upload" class="file-input-hidden">
+                        <button class="file-select-btn" onclick="document.getElementById('cert1-upload').click()">Choose
+                            File</button>
+                        <span class="file-name-display" id="cert1-name">No file chosen</span>
+                    </div>
+                </div>
+
+                <div class="file-upload-block mt-3">
+                    <label class="sub-label mb-1 block">Upload Certificate 2 (Optional)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="cert2-upload" class="file-input-hidden">
+                        <button class="file-select-btn" onclick="document.getElementById('cert2-upload').click()">Choose
+                            File</button>
+                        <span class="file-name-display" id="cert2-name">No file chosen</span>
+                    </div>
+                </div>
+
+                <div class="file-upload-block mt-3">
+                    <label class="sub-label mb-1 block">Upload Certificate 3 (Optional)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="cert3-upload" class="file-input-hidden">
+                        <button class="file-select-btn" onclick="document.getElementById('cert3-upload').click()">Choose
+                            File</button>
+                        <span class="file-name-display" id="cert3-name">No file chosen</span>
+                    </div>
+                </div>
+
+                <div class="form-actions mt-4">
+                    <button class="primary-btn">Continue</button>
+                </div>
+
+                <!-- Divider -->
+                <hr class="section-divider">
+
+                <!-- Declaration -->
+                <div class="form-group mt-4">
+                    <label>Declaration<span class="required">*</span></label>
+                    <p class="declaration-text">I hereby declare that the information given above and in the enclosed
+                        documents is true to the best of my knowledge and belief and nothing has been concealed therein.
+                        I understand that if the information given by me is proved false/not true, I will have to face
+                        the punishment as per the law.</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Place<span class="required">*</span></label>
+                    <input type="text" placeholder="Place" class="standard-input">
+                </div>
+
+                <div class="form-group">
+                    <label>Date<span class="required">*</span></label>
+                    <input type="text" value="27 Feb 2026" class="standard-input bg-gray" readonly>
+                </div>
+
+                <div class="form-actions mt-4">
+                    <button class="primary-btn">Submit</button>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            // Update buttons
+            document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+            if (tabId === 'tab-profile-details') {
+                document.getElementById('tab-btn-profile').classList.add('active');
+            } else {
+                document.getElementById('tab-btn-additional').classList.add('active');
+            }
+
+            // Update content areas
+            document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+            document.getElementById(tabId).style.display = 'block';
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Setup File Input bindings
+        document.querySelectorAll('.file-input-hidden').forEach(input => {
+            input.addEventListener('change', function (e) {
+                const displaySpan = document.getElementById(this.id.replace('-upload', '-name'));
+                if (this.files && this.files.length > 0) {
+                    displaySpan.innerText = this.files[0].name;
+                } else {
+                    displaySpan.innerText = 'No file chosen';
+                }
+            });
+        });
+
+        // Auto-fill from index.html AI parsing
+        window.addEventListener('DOMContentLoaded', () => {
+            const dataStr = localStorage.getItem('aiResumeData');
+            if (dataStr) {
+                try {
+                    const data = JSON.parse(dataStr);
+
+                    if (data.highestEducation) {
+                        const edSelect = document.getElementById('highest-education');
+                        for (let i = 0; i < edSelect.options.length; i++) {
+                            if (edSelect.options[i].value === data.highestEducation.toLowerCase()) {
+                                edSelect.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (data.collegeName) document.getElementById('college-name').value = data.collegeName;
+                    if (data.jobType) document.getElementById('job-type').value = data.jobType;
+
+                    if (data.summary) {
+                        const sumInput = document.getElementById('summary-input');
+                        sumInput.value = data.summary;
+                        document.getElementById('char-count').innerText = data.summary.length + '/150';
+                    }
+
+                    if (data.mandatorySkills && data.mandatorySkills.length > 0) {
+                        document.getElementById('mandatory-skills').value = data.mandatorySkills.join(', ');
+                    }
+
+                    if (data.optionalSkills && data.optionalSkills.length > 0) {
+                        document.getElementById('optional-skills').value = data.optionalSkills.join(', ');
+                    }
+
+                    if (data.languages && data.languages.length > 0) {
+                        const langContainer = document.getElementById('languages-container');
+                        langContainer.innerHTML = ''; // clear default tags
+                        data.languages.forEach(lang => {
+                            const tagDiv = document.createElement('div');
+                            tagDiv.className = 'tag';
+                            tagDiv.innerHTML = `${lang} <i class='bx bx-x'></i>`;
+                            langContainer.appendChild(tagDiv);
+                        });
+                        const inputLi = document.createElement('input');
+                        inputLi.type = 'text';
+                        inputLi.id = 'languages-input';
+                        inputLi.placeholder = 'Add a Language';
+                        langContainer.appendChild(inputLi);
+                    }
+
+                    if (data.passoutYear) {
+                        // Assuming passoutYear is YYYY, format to YYYY-05-01 for standard input=date
+                        document.getElementById('passout-year').value = `${data.passoutYear}-05-01`;
+                    }
+
+                    if (data.expYears !== undefined) {
+                        const expYSelect = document.getElementById('exp-years');
+                        for (let i = 0; i < expYSelect.options.length; i++) {
+                            if (expYSelect.options[i].value === String(data.expYears)) {
+                                expYSelect.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (data.expMonths !== undefined) {
+                        const expMSelect = document.getElementById('exp-months');
+                        for (let i = 0; i < expMSelect.options.length; i++) {
+                            if (expMSelect.options[i].value === String(data.expMonths)) {
+                                expMSelect.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (data.schoolName) {
+                        document.getElementById('school-btn').style.display = 'none';
+                        document.getElementById('school-input').style.display = 'block';
+                        document.getElementById('school-input').value = data.schoolName;
+                    }
+
+                    if (data.intermediateName) {
+                        document.getElementById('inter-btn').style.display = 'none';
+                        document.getElementById('inter-input').style.display = 'block';
+                        document.getElementById('inter-input').value = data.intermediateName;
+                    }
+
+                    // highlight filled areas
+                    document.getElementById('tab-profile-details').classList.add('auto-filled-glow');
+                    setTimeout(() => {
+                        document.getElementById('tab-profile-details').classList.remove('auto-filled-glow');
+                    }, 2000);
+
+                } catch (e) {
+                    console.error("Error parsing resume data", e);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
